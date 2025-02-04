@@ -1,44 +1,95 @@
 {
-    "version": 1,
-    "author": "Seu Nome",
-    "description": "Semáforo com botão usando Raspberry Pi Pico W",
-    "devices": {
-      "pico": {
-        "type": "raspberry-pi-pico-w",
-        "connections": {
-          "GP2": "led_vermelho:A",
-          "GP3": "led_verde:A",
-          "GP4": "led_azul:A",
-          "GP5": "botao:1"
-        }
-      },
-      "led_vermelho": {
-        "type": "led",
-        "color": "red",
-        "connections": {
-          "C": "gnd"
-        }
-      },
-      "led_verde": {
-        "type": "led",
-        "color": "green",
-        "connections": {
-          "C": "gnd"
-        }
-      },
-      "led_azul": {
-        "type": "led",
-        "color": "blue",
-        "connections": {
-          "C": "gnd"
-        }
-      },
-      "botao": {
-        "type": "pushbutton",
-        "connections": {
-          "2": "gnd"
-        }
+  "version": 1,
+  "author": "Daniel Souza Silva",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": -120.85,
+      "left": -51.25,
+      "attrs": {
+        "builder": "pico-sdk"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 61.55,
+      "left": -242.4,
+      "attrs": {
+        "value": "330"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 101.55,
+      "left": -242.4,
+      "attrs": {
+        "value": "330"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 141.55,
+      "left": -242.4,
+      "attrs": {
+        "value": "330"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 21.45,
+      "left": -357.8,
+      "attrs": {
+        "color": "limegreen"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 61.4,
+      "left": -357.8,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 101.4,
+      "left": -357.8,
+      "attrs": {
+        "color": "blue"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -99.2,
+      "left": -192,
+      "attrs": {
+        "color": "black"
       }
     }
-  }
-  
+  ],
+  "connections": [
+    ["pico:GP0", "$serialMonitor:RX", "", []],
+    ["pico:GP1", "$serialMonitor:TX", "", []],
+    ["pico:GND.4", "r1:2", "black", ["h0"]],
+    ["led1:C", "r1:1", "green", ["v0"]],
+    ["pico:GND.1", "btn1:1.r", "black", ["h0"]],
+    ["pico:GP5", "btn1:2.r", "green", ["h0"]],
+    ["pico:GP11", "led3:A", "blue", ["h0"]],
+    ["pico:GP12", "led2:A", "red", ["h0"]],
+    ["pico:GP13", "led1:A", "green", ["h0"]],
+    ["pico:GND.4", "r2:2", "black", ["h0"]],
+    ["led2:C", "r2:1", "red", ["v0"]],
+    ["pico:GND.4", "r3:2", "black", ["h0"]],
+    ["led3:C", "r3:1", "blue", ["v0"]]
+  ],
+  "dependencies": {}
+}
