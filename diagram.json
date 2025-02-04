@@ -1,0 +1,44 @@
+{
+    "version": 1,
+    "author": "Seu Nome",
+    "description": "Semáforo com botão usando Raspberry Pi Pico W",
+    "devices": {
+      "pico": {
+        "type": "raspberry-pi-pico-w",
+        "connections": {
+          "GP2": "led_vermelho:A",
+          "GP3": "led_verde:A",
+          "GP4": "led_azul:A",
+          "GP5": "botao:1"
+        }
+      },
+      "led_vermelho": {
+        "type": "led",
+        "color": "red",
+        "connections": {
+          "C": "gnd"
+        }
+      },
+      "led_verde": {
+        "type": "led",
+        "color": "green",
+        "connections": {
+          "C": "gnd"
+        }
+      },
+      "led_azul": {
+        "type": "led",
+        "color": "blue",
+        "connections": {
+          "C": "gnd"
+        }
+      },
+      "botao": {
+        "type": "pushbutton",
+        "connections": {
+          "2": "gnd"
+        }
+      }
+    }
+  }
+  
